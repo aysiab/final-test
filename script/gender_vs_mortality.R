@@ -3,15 +3,15 @@
 library(ggplot2)
 library(dplyr)
 
-AlignmentMortality <- function(dataset) {
+GenderMortality <- function(dataset) {
   all.data <- dataset
   }
   
 
-AvMtable <- function(dataset) {
+GvMtable <- function(dataset) {
   living <- dataset %>%
     filter()
 }
-  # select alignment 
+  # select gender 
   # select mortality 
   
