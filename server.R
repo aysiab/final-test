@@ -9,6 +9,13 @@ marvel <- read.csv("data/marvel-wikia-data.csv")
 
 
 shinyServer(function(input, output) {
-  #Gender vs Mortality 
+  output$genderMortality <- renderPlotly({
+    mortality.selected <- input$mortality
+    if(mortality.selected != "***") {
+      data <- marvel %>%
+        filter(ALIVE == mortality.selected)
+    }
+    return(GenderMortality(marvel))
+  })
   
 })

@@ -7,19 +7,15 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "align",
-                  label = "Alignment",
-                  choices = c("Good", "Evil", "Neutral", "All"),
-                  selected = "All"),
-      radioButtons(inputId = "alive",
-                   label = "Still Alive?", 
-                   choices = c("Yes","No","All"),
-                   selected = "All")
+      selectInput(inputId = "mortality",
+                  label = "Mortality:",
+                  choices = c("Living Characters", "Deceased Characters", "All" = "***"),
+                  selected = "All")
     ),
     
     mainPanel(
       #give your plot a descriptive name
-      plotOutput("alignmentMortality")
+      plotOutput("genderMortality")
     )
   )
 ))
