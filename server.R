@@ -5,7 +5,8 @@ library(dplyr)
 
 source("./script/gender_vs_mortality.R")
 
-marvel <- read.csv("data/marvel-wikia-data.csv")
+marvel <- read.csv("data/marvel-wikia-data.csv", stringsAsFactors = FALSE)
+colnames(marvel)[13] <- "YEAR"
 
 
 shinyServer(function(input, output) {
@@ -14,6 +15,8 @@ shinyServer(function(input, output) {
     if(mortality.selected != "***") {
       marvel <- marvel %>%
         filter(ALIVE == mortality.selected)
+    } else {
+      marvel <- marvel
     }
     return(GenderMortality(marvel))
   })

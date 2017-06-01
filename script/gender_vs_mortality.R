@@ -9,8 +9,8 @@ GenderMortality <- function(dataset) {
   colnames(all.data) <- c("YEAR","Male","Female")
   plot <- plot_ly(all.data, x = ~YEAR, y = ~Male, type = 'bar', name = 'Male') %>%
     add_trace(y = ~Female, name = 'Female') %>%
-    layout(yaxis = list(title = 'Count'), barmode = 'group') %>%
-  return()
+    layout(yaxis = list(title = 'Count'), barmode = 'group')
+  return(plot)
   }
 
 GenderTable <- function(dataset) {
@@ -30,7 +30,7 @@ GenderTable <- function(dataset) {
   
   all.data <- left_join(male, female, by = "YEAR")
   all.data[is.na(all.data)] <- 0
-  colnames(all.data) <- c("Year", "Total Female Characters", "Total Male Characters")
+  colnames(all.data) <- c("YEAR", "Total Female Characters", "Total Male Characters")
   
   return(all.data)
 }
