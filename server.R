@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
   output$genderMortality <- renderPlotly({
     mortality.selected <- input$mortality
     if(mortality.selected != "***") {
-      data <- marvel %>%
+      marvel <- marvel %>%
         filter(ALIVE == mortality.selected)
     }
     return(GenderMortality(marvel))

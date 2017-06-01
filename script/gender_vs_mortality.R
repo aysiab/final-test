@@ -5,24 +5,23 @@ library(dplyr)
 
 # Uses bar graph to show the mortality rate between genders 
 GenderMortality <- function(dataset) {
-  all.data <- Gendertable(dataset) 
+  all.data <- GenderTable(dataset) 
   colnames(all.data) <- c("YEAR","Male","Female")
   plot <- plot_ly(all.data, x = ~YEAR, y = ~Male, type = 'bar', name = 'Male') %>%
     add_trace(y = ~Female, name = 'Female') %>%
-    layout(yaxis = list(title = 'Count'), barmode = 'group')
+    layout(yaxis = list(title = 'Count'), barmode = 'group') %>%
   return()
   }
-  
 
-Gendertable <- function(dataset) {
-  # Alive characters
+GenderTable <- function(dataset) {
+  # male characters
   male <- dataset %>%
     filter(SEX == "", is.na(YEAR) == FALSE) %>%
     group_by(YEAR) %>%
     summarise(freq = n())
   colnames(male) <- c("YEAR","Male")
   
-  # Deceased characters
+  # female characters
   female <- dataset %>%
     filter(SEX == "", is.na(YEAR) == FALSE) %>%
     group_by(YEAR) %>%

@@ -3,13 +3,13 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Title 
-  titlePanel("Alignment of Characters Alive vs Deceased"),
+  titlePanel("Gender Comparisons of Mortality Rates"),
   
   sidebarLayout(
     sidebarPanel(
       selectInput(inputId = "mortality",
                   label = "Mortality:",
-                  choices = c("Living Characters", "Deceased Characters", "All" = "***"),
+                  choices = c("Living" = "Living Characters", "Deceased" =  "Deceased Characters", "All" = "***"),
                   selected = "All")
     ),
     
